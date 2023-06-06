@@ -12,20 +12,16 @@ import {
   MenuItem,
   TablePagination,
   TableSortLabel,
-  Toolbar,
   Typography,
   InputAdornment,
-  IconButton,
   FormControl,
   InputLabel,
   OutlinedInput,
-  Theme,
   Menu,
   Box,
 } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
-import { addRow, editRow } from '../reduxStore/store';
-import { makeStyles } from '@mui/styles';
+import {  editRow } from '../reduxStore/store';
 import SearchIcon from '@mui/icons-material/Search';
 
 interface RowData {
@@ -35,21 +31,6 @@ interface RowData {
   pincode: string;
   status: string;
 }
-
-// const useStyles = makeStyles((theme:Theme) => ({
-//   tableContainer: {
-//     marginBottom: theme.spacing(2),
-//   },
-//   toolbar: {
-//     paddingLeft: theme.spacing(2),
-//     paddingRight: theme.spacing(2),
-//     display: 'flex',
-//     justifyContent: 'space-between',
-//   },
-//   searchInput: {
-//     width: 300,
-//   },
-// }));
 
 const TableComponent = () => {
   const [editCell,setEditCell]=useState<{field:string,rowId:string}|null>(null)
@@ -66,13 +47,11 @@ const TableComponent = () => {
   const [sortConfig, setSortConfig] = useState<{ key: string; direction: 'asc' | 'desc' } | null>(null);
 
   useEffect(() => {
-    // Fetch table data from Redux store or an API endpoint
     const initialData: RowData[] = [];
     dispatch(editRow(initialData));
   }, []);
 
   useEffect(() => {
-    // Filter the rows based on the search text
     const filtered = rows.filter((row:any) =>
       row.name.toLowerCase().includes(searchText.toLowerCase())
     );
@@ -94,11 +73,9 @@ const TableComponent = () => {
     });
     
     dispatch(editRow(updatedRows));
-
-    // setEditCell(null);
   };
 
-  const handleChangePage = (event: unknown, newPage: number) => {
+  const handleChangePage = (_event: unknown, newPage: number) => {
     setPage(newPage);
   };
 

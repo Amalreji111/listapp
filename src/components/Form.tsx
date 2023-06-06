@@ -3,7 +3,8 @@ import { TextField, Button, FormControl, Select, MenuItem, SelectChangeEvent, Ty
 import { useDispatch } from 'react-redux';
 import { addRow } from '../reduxStore/store';
 import  "./Style.css"
-import { doesntStartWithNumber, validMaxLength, validMinLength, validNoNumbers, validNumberString, validString } from '../Common/Utils';
+import { doesntStartWithNumber, validMaxLength, validMinLength, validNumberString, validString } from '../Common/Utils';
+import { Errors } from '../Common/Errors';
 
 const Form = () => {
   const [name, setName] = useState('');
@@ -43,78 +44,77 @@ const Form = () => {
     setStatusErrorMessage("")
     setStatus(event.target.value);
   };
- const validate=(event:React.FormEvent<HTMLFormElement>)=>{
+ const validate=(_event:React.FormEvent<HTMLFormElement>)=>{
   if(!name||name===""){
-    //name not valid
     setIsNameError(true);
-    setNameErrorMessage("Name must not be empty");
+    setNameErrorMessage(Errors.NAME_NOT_EMPTY);
     return false
   } 
   if(!validString(name)){
-    //name not valid
+    
     setIsNameError(true);
-    setNameErrorMessage("Not a valid name.");
+    setNameErrorMessage(Errors.NAME_IS_NOT_VALID);
     return false
   } 
   if(!validMinLength(name,2)){
-    //name not valid
+    
     setIsNameError(true);
-    setNameErrorMessage("Name contains atleast two characters");
+    setNameErrorMessage(Errors.NAME_MUST_MINIMUM_TWO);
     return false
   } 
   if(!validMaxLength(name,20)){
-    //name not valid
+    
     setIsNameError(true);
-    setNameErrorMessage("Name must contain maximum 4 characters.");
+    setNameErrorMessage(Errors.NAME_MUST_BE_MAXIMUM_TWENTY);
     return false
   } 
   if(!address||address===""){
-    //name not valid
+    
     setIsAddressError(true);
-    setAddressErrorMessage("Address must not be empty.");
+    setAddressErrorMessage(Errors.ADDRESS_NOT_EMPTY);
     return false 
   }
   if(!doesntStartWithNumber(address)||!validMinLength(address,5)){
-    //name not valid
+    
     setIsAddressError(true);
-    setAddressErrorMessage("Invalid Address provided.");
+    setAddressErrorMessage(Errors.NOT_A_VALID_ADDRESS);
     return false 
   }
   if(!validMaxLength(address,50)){
-    //name not valid
+    
     setIsAddressError(true);
-    setAddressErrorMessage("Name max contains 50 characters");
+    setAddressErrorMessage(Errors.ADDRESS_MUST_BE_MAXIMUM_FIFTY);
     return false
   } 
   if(!pincode||pincode===""){
-    //name not valid
+    
     setIsPinCodeError(true);
-    setPinCodeErrorMessage("Pin Code must not be empty");
+    setPinCodeErrorMessage(Errors.PIN_CODE_NOT_EMPTY);
     return false
   }
 
   if(!validNumberString(pincode)){
-    //name not valid
+    
     setIsPinCodeError(true);
-    setPinCodeErrorMessage("Pincode must contains only numbers");
+    setPinCodeErrorMessage(Errors.PIN_CODE_CONTAINS_ONLY_NUMBER);
     return false
   }
   if(!validMaxLength(address,8)){
-    //name not valid
+    
     setIsPinCodeError(true);
-    setPinCodeErrorMessage("Pincode must be less than 8 numbers.");
+    setPinCodeErrorMessage(Errors.PIN_CODE_MUST_BE_MAXIMUM_EIGHT);
     return false
   } 
   if(!status||status===""){
-    //name not valid
+    
     setIsStatusError(true);
-    setStatusErrorMessage("Status must not be empty");
+    setStatusErrorMessage(Errors.STATUS_NOT_EMPTY);
     return false
   }
   if(!validString(status)){
-    //name not valid
+    
     setIsStatusError(true);
-    setStatusErrorMessage("Status must not be empty");
+    setStatusErrorMessage(Errors.NOT_A_VALID_STATUS);
     return false
   }
   return true
@@ -122,7 +122,6 @@ const Form = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
    if(!validate(event))return
-    // Dispatch an action to add a new row to the table
     dispatch(
       addRow({
         name,
@@ -132,7 +131,6 @@ const Form = () => {
       })
     );
   
-    // Reset the form inputs
     setName('');
     setAddress('');
     setPincode('');

@@ -12,8 +12,6 @@ export function generateUniqueID(): string {
   }
   // Utility function to check if a string is valid
 export const validString = (value: string): boolean => {
-    // Define your string validation logic here
-    // For example, checking if it contains only alphabetic characters
     const regex = /^[A-Za-z]+$/;
     return regex.test(value);
   };
@@ -27,20 +25,17 @@ export const validString = (value: string): boolean => {
       return false;
     }
   
-    // Check if the string is a valid number
     return !isNaN(Number(value));
   };
   
   // Utility function to check if a string doesn't start with a number
  export  const doesntStartWithNumber = (value: string): boolean => {
-    // Define your logic to check if the string doesn't start with a number
     const regex = /^[^0-9]/;
     return regex.test(value);
   };
   
   // Utility function to check if a string contains certain characters
  export  const containsCertainCharacters = (value: string, characters: string[]): boolean => {
-    // Define your logic to check if the string contains certain characters
     const regex = new RegExp(`[${characters.join('')}]`);
     return regex.test(value);
   };

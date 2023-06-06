@@ -26,11 +26,6 @@ const tableSlice = createSlice({
       console.log("I am selected")
     },
     editRow: (state, action) => {
-    //   const { id, field, value } = action.payload;
-    //   const row :any= state.rows.find((row) => row.id === id);
-    //   if (row) {
-    //     row[field] = value;
-    //   }
     state.rows=action.payload
     },
   },
