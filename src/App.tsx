@@ -1,20 +1,18 @@
-import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-/**
- * 
- * COntain name,address,pincode and a dropdown box active and inactive in the list
- * should be an action column (edit and delete),top of th
- * 
- * 
- */
-function App() {
+import React from 'react';
+import { Provider } from 'react-redux';
+import store from './reduxStore/store';
+import Form from './components/Form';
+import TableComponent from './components/Table';
+import { StyledEngineProvider, ThemeProvider, createTheme } from '@mui/material';
+
+const App = () => {
   return (
-    <>
 
-    </>
-  )
-}
+    <Provider store={store}>
+      <Form />
+      <TableComponent />
+    </Provider>
+  );
+};
 
-export default App
+export default App;
