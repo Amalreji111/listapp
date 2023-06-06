@@ -136,6 +136,7 @@ const TableComponent = () => {
         <Typography variant="h6" id="tableTitle" component="div">
           User Info
         </Typography>
+        
         <FormControl variant="outlined" className={"searchInput"}>
           <InputLabel htmlFor="search-input">Search</InputLabel>
           <OutlinedInput
@@ -201,7 +202,7 @@ const TableComponent = () => {
                   {editCell?.rowId === row.id && editCell?.field === 'name' ? (
                     <TextField value={row.name} onChange={handleCellValueChange} />
                   ) : (
-                    <TextField value={row.name}  disabled/>
+                    <TextField value={row.name} className='border-none'  disabled/>
 
                   )}
                 </TableCell>
@@ -209,14 +210,14 @@ const TableComponent = () => {
                 {editCell?.rowId === row.id && editCell?.field === 'address' ? (
                     <TextField value={row.address} onChange={handleCellValueChange} />
                   ) : (
-                    <TextField value={row.address}  disabled/>
+                    <TextField value={row.address}  className='border-none'  disabled/>
                   )}
                 </TableCell>
                 <TableCell onBlur={handleOnBlur} onDoubleClick={() => handleCellDoubleClick(row.id, 'pincode')}>
                   {editCell?.rowId === row.id && editCell?.field === 'pincode' ? (
                     <TextField value={row.pincode} onChange={handleCellValueChange} />
                   ) : (
-                    <TextField value={row.pincode}  disabled/>
+                    <TextField value={row.pincode}  className='border-none'  disabled/>
 
                   )}
                 </TableCell>
@@ -245,7 +246,7 @@ const TableComponent = () => {
         
       </TableContainer>
       <TablePagination
-        rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
+        rowsPerPageOptions={[5, 10, 25]}
         component="div"
         count={filteredRows.length}
         rowsPerPage={rowsPerPage}

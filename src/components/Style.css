@@ -48,7 +48,21 @@
     padding: 16px;
     background-color: #f5f5f5;
   }
-  
+  .text-center{
+    text-align: center;
+  }
+  .tableContainer{
+    max-height: 20rem !important;
+    max-height: 20rem !important;
+    overflow-y: scroll;
+  }
+  .display-cell-values{
+    width:15rem;
+    height: 3.4rem;
+  }
+  .border-none{
+    border: none;
+  }
   .searchInput {
     width: 200px;
   }

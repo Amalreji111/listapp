@@ -23,7 +23,6 @@ const tableSlice = createSlice({
   reducers: {
     addRow: (state, action) => {
       state.rows.push({id:generateUniqueID(),...action.payload});
-      console.log("I am selected")
     },
     editRow: (state, action) => {
     state.rows=action.payload
