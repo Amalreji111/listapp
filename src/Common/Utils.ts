@@ -11,8 +11,8 @@ export function generateUniqueID(): string {
     return id;
   }
   // Utility function to check if a string is valid
-export const validString = (value: string): boolean => {
-    const regex = /^[A-Za-z]+$/;
+  export const validString = (value: string): boolean => {
+    const regex = /^[A-Za-z][A-Za-z\s]*$/;
     return regex.test(value);
   };
  export const validNoNumbers = (value: string): boolean => {

@@ -99,7 +99,7 @@ const Form = () => {
     setPinCodeErrorMessage(Errors.PIN_CODE_CONTAINS_ONLY_NUMBER);
     return false
   }
-  if(!validMaxLength(address,8)){
+  if(!validMaxLength(pincode,8)){
     
     setIsPinCodeError(true);
     setPinCodeErrorMessage(Errors.PIN_CODE_MUST_BE_MAXIMUM_EIGHT);
